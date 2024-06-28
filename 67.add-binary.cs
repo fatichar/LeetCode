@@ -19,16 +19,7 @@ public class Solution
             --ai; --bi;
 
             var s = a[ai] - '0' + b[bi] + carry;
-            if (s > '1')
-            {
-                sum.Add((char)(s - 2));
-                carry = 1;
-            }
-            else
-            {
-                sum.Add((char)s);
-                carry = 0;
-            }
+            carry = Add(sum, s);
         }
 
         string r = b;
@@ -41,16 +32,7 @@ public class Solution
         while (ri > -1)
         {
             var s = r[ri--] + carry;
-            if (s > '1')
-            {
-                sum.Add((char)(s - 2));
-                carry = 1;
-            }
-            else
-            {
-                sum.Add((char)s);
-                carry = 0;
-            }
+            carry = Add(sum, s);
         }
         if (carry == 1)
         {
@@ -62,8 +44,18 @@ public class Solution
         {
             sb.Append(sum[--i]);
         }
-
         return sb.ToString();
+    }
+
+    int Add(List<char> sum, int num)
+    {
+        if (num > '1')
+        {
+            sum.Add((char)(num - 2));
+            return 1;
+        }
+        sum.Add((char)num);
+        return 0;
     }
 }
 // @lc code=end
