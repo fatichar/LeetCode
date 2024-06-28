@@ -5,24 +5,33 @@
  */
 
 // @lc code=start
-public class Solution {
-    public int StrStr(string haystack, string needle) {
+public class Solution
+{
+    public int StrStr(string haystack, string needle)
+    {
+        return StrStr_indices(haystack, needle);
+    }
+
+    public int StrStr_indices(string haystack, string needle)
+    {
         int hl = haystack.Length, nl = needle.Length;
         if (nl > hl) return -1;
 
         // key = char, value = indices of char in haystack
-        var dic = new Dictionary<int, List<int>>(26);
+        var dic = new ICollection<int>[26];
         for (int f = 0; f < 26; ++f)
         {
-            dic.Add(f, new List<int>());
+            dic[f] = new List<int>(hl);
         }
 
+        // populate dic with indices of haystack
         for (int h = 0; h < hl; ++h)
         {
             dic[haystack[h] - 'a'].Add(h);
         }
 
-        var found = new List<List<int>>();
+        // list of indices of each needle char in haystack
+        var found = new List<ICollection<int>>(nl);
         for (int n = 0; n < nl; ++n)
         {
             var indices = dic[needle[n] - 'a'];
@@ -30,10 +39,26 @@ public class Solution {
             found.Add(indices);
         }
 
+        var begin = found[0];
+        foreach (int start in begin)
+        {
+            if (start + nl > hl) continue;
+
+            int j = 1, end = start + j;
+            for (; j < nl; ++j, ++end)
+            {
+                var indices = found[j];
+                if (!indices.Contains(end)) break;
+            }
+
+            if (j == nl) return start;
+        }
+
         return -1;
     }
 
-    public int StrStr_flags(string haystack, string needle) {
+    public int StrStr_flags(string haystack, string needle)
+    {
         int hl = haystack.Length, nl = needle.Length;
         if (nl > hl) return -1;
 
@@ -59,11 +84,10 @@ public class Solution {
             {
                 if (haystack[h] != needle[n]) break;
             }
-            if (n == nl)    return hs;
+            if (n == nl) return hs;
         }
 
         return -1;
     }
 }
 // @lc code=end
-
