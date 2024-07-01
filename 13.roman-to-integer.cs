@@ -5,11 +5,11 @@
  */
 
 // @lc code=start
-public class Solution
+public class Solution1
 {
     static int[] Romans = new int[128];
 
-    static Solution()
+    static Solution1()
     {
         Romans['I'] = 1;
         Romans['V'] = 5;

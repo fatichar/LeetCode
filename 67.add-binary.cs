@@ -5,6 +5,9 @@
  */
 
 // @lc code=start
+
+using System.Text;
+
 public class Solution
 {
     public string AddBinary(string a, string b)
