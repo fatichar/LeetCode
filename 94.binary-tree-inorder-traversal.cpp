@@ -29,7 +29,6 @@ public:
 
         vector<TreeNode*> nodes;
 
-        // inorder(result, root);
         auto current = root;
         nodes.push_back(current);
 
