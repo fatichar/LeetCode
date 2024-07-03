@@ -58,7 +58,7 @@ Your memory usage beats 18.14 % of csharp submissions (48.1 MB)
             // var complement = target - num;
             if (complementMap.TryGetValue(num, out int numIndex))
             {
-                return new int[] { numIndex, i };
+                return [numIndex, i];
             }
             else
             {
@@ -66,7 +66,7 @@ Your memory usage beats 18.14 % of csharp submissions (48.1 MB)
             }
             ++i;
         }
-        return new int[] { -1, -1 };
+        return [-1, -1];
     }
 }
 /*
