@@ -6,8 +6,40 @@ Date        Rank
 2 July      17,10,017
 3 July      15,72,120
 4 July      12,64,815
-
+5 July      11,89,469
 
 Revisit:
 - Binary tree iteartive traversal
 - count complete tree nodes
+
+
+
+
+
+auto init = []()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    return 0;
+}
+
+"()"
+
+1. add to the flat case: "()()"
+2. insert after each opening: "(())"
+
+"()()"
+"(())"
+
+n = 3
+
+1. add to the flat case: "()()()"
+2. insert after each opening: "(())()" "()(())", "(()())", "((()))"
+
+
+
+
+
+"()()()"
+"()()()"
